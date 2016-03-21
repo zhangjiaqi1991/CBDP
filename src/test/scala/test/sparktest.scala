@@ -1,4 +1,4 @@
-package sparkcluster
+package test
 
 import org.apache.spark.{SparkConf, SparkContext}
 import sparkcluster.constant._
