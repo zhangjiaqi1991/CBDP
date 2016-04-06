@@ -2,7 +2,9 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/run.sh" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/run.sh" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/runargs.sh" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/runargs.sh" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/runargs.sh" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/scala/cluster/sc.scala" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/scala/sparkcluster/cass2spark.scala" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/scala/sparkcluster/constant.scala" charset="UTF-8" />

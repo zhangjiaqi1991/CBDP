@@ -27,8 +27,8 @@ object cass2spark {
         //附上行号
         val indexlocation = location.zipWithIndex().map(a => (a._2.toInt, a ._1))
        //val indexlocation = sc.parallelize(location.collect().map { s => i += 1; (i, s)}) //附上行号
-        val result = mainfunction(indexlocation, sc).repartition(1).sortByKey()
-        val (result1, location1) = subclass(indexlocation, result, 3, sc) //对某个类再次进行分类
+       val result = mainfunction(indexlocation, sc, PERCENT).repartition(1).sortByKey()
+        val (result1, location1) = subclass(indexlocation, result, 3, sc, PERCENT) //对某个类再次进行分类
     }
 
 }

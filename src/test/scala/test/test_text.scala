@@ -15,15 +15,8 @@ object test_text extends App {
   //  val filename = regex.findFirstIn(f1.getName).mkString.filter(s => s != '.')
   //  print(filename)
 
-  val baoStream = new ByteArrayOutputStream(1024);
-  // cache stream
-  val cacheStream = new PrintStream(baoStream);
-  val oldStream = System.out;
-  System.setOut(cacheStream);
-  println("echo wtf")
-  val message = baoStream.toString();
-  System.setOut(oldStream);
-  println(message)
+  val t = (1.0, 2.0)
+  println(t._1.toString() + "," + t._2.toString)
   //  val t=new Thread(new Runnable(){
   //    val cin=new Scanner(System.in)
   //    def  run(){

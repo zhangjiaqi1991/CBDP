@@ -34,7 +34,8 @@ object sparktools {
 
     /**
      * 两个点之间的距离
-     * @param v1
+      *
+      * @param v1
      * @param v2
      * @return
      */
@@ -44,7 +45,8 @@ object sparktools {
 
     /**
      * 局部密度
-     * @param distvector 行号，距离向量
+      *
+      * @param distvector 行号，距离向量
      * @return 行号，点的局部密度
      */
     def localdensity(distvector: Tuple2[Int, DenseVector[Double]], threshlod:
@@ -57,14 +59,15 @@ object sparktools {
         Tuple2(distvector._1, sum(ess) - 1.0)
     }
 
-    /**
-     * 阈值
-     * @param distmat  距离矩阵
-     * @return 阈值
-     */
+  /**
+    *
+    * @param distmat 距离矩阵
+    * @param percent 阈值百分比
+    * @return 阈值
+    */
 
-    def threshlod(distmat: RDD[(Int, DenseVector[Double])]): Double = {
-        val position = PERCENT * distmat.count() / 100
+  def threshlod(distmat: RDD[(Int, DenseVector[Double])], percent: Int): Double = {
+    val position = percent * distmat.count() / 100
         val p = (position << 1).toInt
         val t = distmat.map((v) => v._2).flatMap((v) => v.toArray).filter(s => s != 0.0)
             .takeOrdered(p).last //过滤0或者distinct
@@ -73,7 +76,8 @@ object sparktools {
 
     /**
      * 最近点和最近距离的计算
-     * @param density_distvector （行号，（密度，距离向量））
+      *
+      * @param density_distvector （行号，（密度，距离向量））
      * @param alldensity 所有点的密度  ,    （行号，密度）
      * @param biggestdist  距离中的最大值
      * @return  （点的行号，(密度高的最近点行号，离密度高的点的最近距离）)
@@ -97,7 +101,8 @@ object sparktools {
 
     /**
      * 给类中心点赋类标签
-     * @param md（行号，最近点行号，乘机）
+      *
+      * @param md（行号，最近点行号，乘机）
      * @param center 乘机最大的几个点的乘机值
      * @return （行号，最近点行号，类标签）
      */
@@ -113,7 +118,8 @@ object sparktools {
 
     /**
      * 给每个点赋类标签
-     * @param p （行号，最近点的行号，类标签）   -1为未赋值的点
+      *
+      * @param p （行号，最近点的行号，类标签）   -1为未赋值的点
      * @param c   跟P相同，用来迭代的计算类标签
      * @return （行号，最近点的行号，类标签）
      */
@@ -140,7 +146,8 @@ object sparktools {
 
     /**
      * 估计类的个数
-     * @param d  决策属性RDD
+      *
+      * @param d  决策属性RDD
      * @param sc
      * @return
      */
@@ -210,7 +217,7 @@ object sparktools {
                     .saveAsTextFile(master + resultfile + j.toString + "/lable")
                 radius.repartition(1).saveAsTextFile(master + resultfile + j
                     .toString + "/radius")
-                l.repartition(1).sortByKey().map((s) => (s._2(0), s._2(1)))
+              l.repartition(1).sortByKey().map((s) => (s._2(0), s._2(1))).map(s => s._1.toString() +","+s._2.toString)
                     .saveAsTextFile(master + resultfile + j
                     .toString + "/location")
             } else {//如果被占用了那么就将用户名的后缀+1，递归执行
