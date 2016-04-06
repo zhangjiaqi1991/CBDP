@@ -22,4 +22,6 @@ object hdfs2cass {
         .map(s=>(s(0),s(1),s(2),s(3),s(4),s(5)))
     location.saveToCassandra("test", "xiamen", SomeColumns("unique_id",
         "acquisition_time","lng","lat","status","contain"))
-} }
+
+    }
+}

@@ -31,4 +31,5 @@ object cass2spark {
         val (result1, location1) = subclass(indexlocation, result, 3, sc, PERCENT) //对某个类再次进行分类
     }
 
+
 }

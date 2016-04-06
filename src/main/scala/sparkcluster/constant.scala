@@ -12,4 +12,5 @@ object constant {
     val FILE = "/data/china_700.csv"
     val RESULT="/data/"
     val PREFIX="result"
+
 }

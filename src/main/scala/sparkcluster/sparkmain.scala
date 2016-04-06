@@ -10,6 +10,7 @@ import sparkcluster.sparktools._
  * Created by hy on 15-12-14.
  */
 object sparkmain {
+
     val logger: Logger = LoggerFactory.getLogger(sparkmain.getClass)//获取日志对象
     def main(args: Array[String]) {
         val conf = new SparkConf().setAppName("sparkcluster")
