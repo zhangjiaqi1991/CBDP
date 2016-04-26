@@ -1,6 +1,11 @@
 package sparkstream
 
 import org.apache.spark._
+import org.apache.spark.ml.{PipelineModel, Pipeline}
+import org.apache.spark.ml.classification.DecisionTreeClassifier
+import org.apache.spark.ml.feature.{IndexToString, VectorIndexer, StringIndexer}
+import org.apache.spark.mllib.linalg.Vectors
+import org.apache.spark.sql.SQLContext
 import org.apache.spark.streaming._
 
 /**
@@ -8,16 +13,27 @@ import org.apache.spark.streaming._
   */
 object mlstream {
   def main(args: Array[String]) {
-    val conf = new SparkConf().setMaster("local[2]").setAppName("NetworkWordCount")
-    val ssc = new StreamingContext(conf, Seconds(1))
-    val lines = ssc.socketTextStream("localhost", 9999)
+    val conf = new SparkConf().setMaster("local[2]").setAppName("classify")
+    val sc = new SparkContext(conf)
+    val model = sc.objectFile[PipelineModel]("hdfs://192.168.1.51:9000/data/model.mdl").take(1)(0)
+    val stc = new StreamingContext(sc, Seconds(1))
+    val sqc = new SQLContext(sc)
+    import sqc.implicits._
+
+    val lines = stc.socketTextStream("192.168.1.51", 9998)
     //val lines=ssc.textFileStream("hdfs://192.168.1.51:9000/data/")
-    //lines.print()
-    val words = lines.flatMap(_.split(" "))
-    val pairs = words.map(word => (word, 1))
-    val wordCounts = pairs.reduceByKey(_ + _)
-    wordCounts.print()
-    ssc.start() // Start the computation
-    ssc.awaitTermination() // Wait for the computation to terminate
+
+    val words = lines.foreachRDD { rdd =>
+      val temp = rdd.map { s =>
+        val t = s.split("\\s+").map(_.toDouble)
+        Tuple1(Vectors.dense(t))
+      }.toDF("features")
+      val result = model.transform(temp)
+      val predition = result.select("prediction")
+      predition.show()
+    }
+
+    stc.start() // Start the computation
+    stc.awaitTermination() // Wait for the computation to terminate
   }
 }

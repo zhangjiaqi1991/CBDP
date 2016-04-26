@@ -2,7 +2,7 @@ package sparkclassify
 
 import org.apache.spark.mllib.linalg.Vectors
 import org.apache.spark.{SparkContext, SparkConf}
-import org.apache.spark.ml.Pipeline
+import org.apache.spark.ml.{PipelineModel, Pipeline}
 import org.apache.spark.ml.classification.{DecisionTreeClassificationModel, DecisionTreeClassifier}
 import org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator
 import org.apache.spark.ml.feature.{IndexToString, VectorIndexer, StringIndexer}
@@ -57,12 +57,13 @@ object decision_tree {
 
     // Train model.  This also runs the indexers.
     val model = pipeline.fit(train)
+    //sc.parallelize(List(model)).saveAsObjectFile("model.mdl")
 
     // Make predictions.
     val predictions = model.transform(test)
 
     // Select example rows to display.
-    predictions.select("prediction", "label", "features").show(5)
+    predictions.select("prediction", "label", "features").show()
 
     // Select (prediction, true label) and compute test error
     val evaluator = new MulticlassClassificationEvaluator()

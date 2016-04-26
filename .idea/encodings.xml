@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/run.sh" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/runargs.sh" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/runargs.sh" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/runargs.sh" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/runargs.sh" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/scala/cluster/sc.scala" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/scala/sparkclassify/MLPC.scala" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/scala/sparkclassify/One_vs_Rest.scala" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/scala/sparkclassify/cross_validation.scala" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/scala/sparkclassify/decision_tree.scala" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/scala/sparkclassify/logistic_regression.scala" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/scala/sparkclassify/random_forest.scala" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/scala/sparkcluster/cass2spark.scala" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/scala/sparkcluster/constant.scala" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/scala/sparkcluster/sparkmain.scala" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/scala/sparkcluster/sparktools.scala" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/scala/sparkstream/mlstream.scala" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/scala/text/find.scala" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/scala/text/main.scala" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/scala/text/rate.scala" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/scala/text/sparktext.scala" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/scala/text/tools.scala" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/java/EchoClient.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/java/EchoServer.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/java/test.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/scala/test/sparktest.scala" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/scala/test/test_text.scala" charset="UTF-8" />
     <file url="PROJECT" charset="GBK" />
